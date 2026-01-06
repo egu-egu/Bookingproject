@@ -1,9 +1,9 @@
 import requests
 import os
 from dotenv import load_dotenv
-from Core.Settings.environments import Environment
-from Core.Clients.endpoints import Endpoints
-from Core.Settings.config import Users, Timeout
+from Core.tests.Settings.environments import Environment
+from Core.tests.Clients.endpoints import Endpoints
+from Core.tests.Settings.config import Users
 import allure
 
 load_dotenv()
