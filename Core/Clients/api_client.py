@@ -86,4 +86,5 @@ class APIClient:
             assert 'checkin' in booking_data['bookingdates'], "Missing checkin field"
             assert 'checkout' in booking_data['bookingdates'], "Missing checkout field"
 
+
         return booking_data
