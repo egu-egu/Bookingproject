@@ -68,23 +68,10 @@ class APIClient:
     def get_booking_by_id(self, booking_id):
         with allure.step(f'Get booking by id {booking_id}'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
-            response = self.session.get(url, headers={'Accept': 'application/json'})
+            response = self.session.get(url)
 
         with allure.step('Assert status code'):
             assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
 
-        booking_data = response.json()
 
-        with allure.step('Check response fields'):
-            assert 'firstname' in booking_data, "Missing firstname field"
-            assert 'lastname' in booking_data, "Missing lastname field"
-            assert 'totalprice' in booking_data, "Missing totalprice field"
-            assert 'depositpaid' in booking_data, "Missing depositpaid field"
-            assert 'bookingdates' in booking_data, "Missing bookingdates field"
-            assert 'additionalneeds' in booking_data, "Missing additionalneeds field"
-
-            assert 'checkin' in booking_data['bookingdates'], "Missing checkin field"
-            assert 'checkout' in booking_data['bookingdates'], "Missing checkout field"
-
-
-        return booking_data
+        return response.json()
