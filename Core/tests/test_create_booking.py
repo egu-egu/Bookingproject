@@ -23,10 +23,10 @@ def test_create_booking(api_client, mocker):
 
 
     booking = response["booking"]
-    assert booking["firstname"] == "Jim"
-    assert booking["lastname"] == "Brown"
-    assert booking["totalprice"] == 111
-    assert booking["depositpaid"] == True
-    assert booking["bookingdates"]["checkin"] == "2018-01-01"
-    assert booking["bookingdates"]["checkout"] == "2019-01-01"
-    assert booking["additionalneeds"] == "Breakfast"
+    assert booking["firstname"] == payload["firstname"], 'firstname не совпадает с ожидаемым'
+    assert booking["lastname"] == payload["lastname"], 'lastname не совпадает с ожидаемым'
+    assert booking["totalprice"] == payload["totalprice"], 'totalprice не совпадает с ожидаемым'
+    assert booking["depositpaid"] == payload["depositpaid"], 'depositpaid не совпадает с ожидаемым'
+    assert booking["bookingdates"]["checkin"] == payload["bookingdates"]["checkin"], 'checkin не совпадает с ожидаемым'
+    assert booking["bookingdates"]["checkout"] == payload["bookingdates"]["checkout"], 'checkout не совпадает с ожидаемым'
+    assert booking["additionalneeds"] == payload["additionalneeds"], 'additionalneeds не совпадает с ожидаемым'
