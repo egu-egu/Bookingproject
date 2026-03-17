@@ -88,16 +88,13 @@ class APIClient:
         with allure.step('Creating booking'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT.value}"
 
-            with requests.Session() as temp_session:
-                temp_session.headers.update({
-                    'Content-Type': 'application/json'
-                })
-                for key, value in self.session.headers.items():
-                    if key != 'Authorization':
-                        temp_session.headers[key] = value
+            self.session.headers.update({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            })
 
-                response = temp_session.post(url, json=booking_data)
-                response.raise_for_status()
+            response = self.session.post(url, json=booking_data)
+            response.raise_for_status()
 
         with allure.step('Checking status code'):
             assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
