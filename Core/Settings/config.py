@@ -5,5 +5,5 @@ class Users(Enum):
     USERNAME = "admin"
     PASSWORD = "password123"
 
-class Timeout(Enum):
+class Timeouts(Enum):
     TIMEOUT = 5
