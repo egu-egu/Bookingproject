@@ -89,7 +89,6 @@ class APIClient:
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT.value}"
 
             self.session.headers.update({
-                'Content-Type': 'application/json',
                 'Accept': 'application/json'
             })
 
